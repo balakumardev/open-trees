@@ -24,6 +24,12 @@ TypeScript sources directly, so installation does not depend on a prebuilt
 `dist/` directory or lifecycle scripts. Both the server tools and the native
 terminal session picker load from the same package.
 
+Optional development artifacts use `bun run bundle`, not a lifecycle `build`
+script. npm Git fetchers treat `build` as a preparation trigger even without a
+`prepare` script; source installation does not need that extra dependency step.
+The existing `bun run build` command remains available through `build.ts` for CI
+and development; it is not an npm lifecycle hook.
+
 Manual config:
 
 ```json
@@ -36,7 +42,7 @@ For local development, build the plugin and point OpenCode at the local package:
 
 ```bash
 bun install
-bun run build
+bun run bundle
 ```
 
 ```json
@@ -223,7 +229,7 @@ otherwise they use the operating system's temporary directory.
 ```bash
 bun run lint
 bun run typecheck
-bun run build
+bun run bundle
 bun run test
 bun run test:e2e
 bun pm scan

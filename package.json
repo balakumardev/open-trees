@@ -31,7 +31,7 @@
     "src"
   ],
   "scripts": {
-    "build": "bun build src/index.ts src/server.ts src/cli.ts src/tui.ts src/rpc.ts --outdir dist --target bun --format esm --external @opencode/plugin --external @opencode/client && tsc --emitDeclarationOnly",
+    "bundle": "bun build src/index.ts src/server.ts src/cli.ts src/tui.ts src/rpc.ts --outdir dist --target bun --format esm --external @opencode/plugin --external @opencode/client && tsc --emitDeclarationOnly",
     "lint": "biome check .",
     "format": "biome format --write .",
     "typecheck": "tsc --noEmit",
